@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="custom.js"></script>
+    <body ng-app="myApp" ng-controller="myCtrl">
+        <form name="myForm">
+            <table>
+                <tr>
+                    <td><label>First Name</label></td>
+                    <td>
+                        <input type="text"
+                               name="firstName"
+                               ng-model="myForm1.firstName">
+                    </td>{{myForm.firstName.$error}}
+                </tr>
+                <tr>
+                    <td><label>Last Name</label></td>
+                    <td>
+                        <input type="text" 
+                               ng-model="myForm1.lastName">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Address</td>
+                    <td>
+                        <textarea ng-model="myForm1.address" 
+                                  rows=5 
+                                  cols=20></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Email ID</td>
+                    <td><input type="email" 
+                               ng-model="myForm1.email">
+                    </td>
+                    
+                </tr>
+                <tr>
+                    <td>Mobile Number</td>
+                    <td><input type="text"
+                               size=1
+                               ng-model="myForm1.countryCode">
+                        <input type="text" 
+                               ng-model="myForm1.mobileNumber">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Gender</td>
+                    <td><select ng-model="myForm1.gender"
+                                ng-options="item for item in opt">
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td><input type="password" 
+                               ng-model="myForm1.password">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Confirm Password</td>
+                    <td><input type="password"
+                               ng-model="myForm1.confirmPassword">
+                    </td>
+                </tr>
+                <tr>
+                    <td><button type="submit" 
+                                ng-click="validateForm()">Submit</button>
+                    </td>
+            </table>
+            <br>
+            <table border="1">
+                <tr>
+                    <td>Sr No</td>
+                    <td>Full Name</td>
+                    <td>Gender</td>
+                </tr>
+                <tr ng-repeat="x in data">
+                    <td>{{$index+1}}</td>
+                    <td>{{x.fName + " " + x.lName}}</td>
+                    <td>{{x.Gen}}</td>
+                    <td><button type="button" 
+                                ng-click="deleteRecord($index)">Delete</button>
+                    </td>
+                    <td><button type="button" 
+                                ng-click="updateRecord($index,x)">Update</button>
+                    </td>
+                    <td><button type="button" 
+                                ng-click="viewRecord(x)">View Details</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>
